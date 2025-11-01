@@ -22,7 +22,9 @@ public class ClaimController {
     @PostMapping
     public ResponseEntity<Claim> submitClaim(@RequestBody Claim claim) {
 
-        return ResponseEntity.ok(claimService.submitClaim(claim));
+        Claim savedClaim = claimService.submitClaim(claim);
+        return ResponseEntity.ok(savedClaim);
+//        return ResponseEntity.ok(claimService.submitClaim(claim));
     }
 
     @GetMapping("/{id}")
