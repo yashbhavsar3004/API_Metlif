@@ -20,15 +20,14 @@ public class PolicyController {
     @Autowired
     private PolicyService policyService;
 
-    @GetMapping
-    public ResponseEntity<String> getAllPolicies() {
-        return ResponseEntity.ok(policyService.getAllPolicies());
+    @GetMapping("/{cusID}")
+    public ResponseEntity<List<Policy>> getAllPolicies(@PathVariable String cusID) {
+        return ResponseEntity.ok(policyService.getAllPolicies(cusID));
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Policy> getPolicyById(@PathVariable Long id) {
-        return ResponseEntity.ok(policyService.getPolicyById(id));
-    }
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Policy> getPolicyById(@PathVariable Long id) {
+//        return ResponseEntity.ok(policyService.getPolicyById(id));
+//    }
 
 //    @PostMapping
 //    public ResponseEntity<ApiResponse> createPolicy(@RequestBody Policy policy) {

@@ -6,7 +6,7 @@ import com.insureai.rulewise_backend.entity.Policy;
 import java.util.List;
 
 public interface PolicyService {
-    String getAllPolicies();
+    List<Policy> getAllPolicies(String cusID);
     Policy getPolicyById(Long id);
     Policy createPolicy(Policy policy);
     Policy updatePolicy(Long id, Policy policy);

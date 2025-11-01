@@ -21,8 +21,8 @@ public class PolicyServiceImpl implements PolicyService {
     private PolicyRepository policyRepository;
 
     @Override
-    public String getAllPolicies() {
-        return "policyRepository.findAll(";
+    public List<Policy> getAllPolicies(String cusID) {
+        return policyRepository.findByCustomerId(cusID);
     }
 
     @Override
@@ -39,14 +39,7 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public Policy updatePolicy(Long id, Policy updatedPolicy) {
         Policy existingPolicy = getPolicyById(id);
-        existingPolicy.setPolicyNumber(updatedPolicy.getPolicyNumber());
-        existingPolicy.setPolicyType(updatedPolicy.getPolicyType());
-        existingPolicy.setCoverageAmount(updatedPolicy.getCoverageAmount());
-        existingPolicy.setDeductible(updatedPolicy.getDeductible());
-        existingPolicy.setStartDate(updatedPolicy.getStartDate());
-        existingPolicy.setEndDate(updatedPolicy.getEndDate());
-        existingPolicy.setCustomerId(updatedPolicy.getCustomerId());
-        existingPolicy.setStatus(updatedPolicy.getStatus());
+
         return policyRepository.save(existingPolicy);
     }
 
